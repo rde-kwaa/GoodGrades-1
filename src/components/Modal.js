@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
@@ -52,25 +52,29 @@ Fade.propTypes = {
   onExited: PropTypes.func
 };
 
+class RedirectPage extends React.Component {
+  componentDidMount(){
+    window.location.replace('http://room.sh')
+  }
+}
+
 export default function SpringModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [redirect, setRedirect] = React.useState(false);
   const [roomCode, setRoomCode] = React.useState(null);
 
+  useEffect(() => {
+    if (redirect) {
+      // do something meaningful, Promises, if/else, whatever, and then
+      // console.log("room.sh/go/" + roomCode)
+      window.location.assign("//room.sh/go/" + roomCode);
+    }
+  });
+
   const handleRedirect = () => {
     console.log({redirect});
     setRedirect(!redirect);
-  }
-
-  const renderRedirect = () => {
-    console.log({roomCode})
-    if (redirect) {
-      return <Route path='/privacy-policy' component={() => { 
-                    window.location.href = 'https://room.sh/go' + roomCode; 
-                    return null;
-              }}/>
-    }
   }
 
   const handleChange = (event) => {
@@ -86,12 +90,12 @@ export default function SpringModal() {
     setOpen(false);
   };
 
+  
   return (
     <div>
       <Button variant='contained' color='secondary' onClick={handleOpen}>
         Join Room
       </Button>
-      {redirect ? renderRedirect : <></>}
       <Modal
         aria-labelledby='spring-modal-title'
         aria-describedby='spring-modal-description'

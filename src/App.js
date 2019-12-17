@@ -70,25 +70,6 @@ const responseGoogle = (response) => {
   console.log(response);
 }
 
-function LoginButton (props) {
-  return (
-    <div>
-      <NavBar />
-      <div className='App'>
-        <header className='App-header'>
-          <GoogleLogin
-            clientId="198987621325-8mjc0d3e410b1lt5goj0hj81qmrni2bk.apps.googleusercontent.com"
-            buttonText="Continue with Google"
-            onSuccess={props.login}
-            onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
-          />
-        </header>
-      </div>
-    </div>
-  );
-}
-
 const fakeAuth = {
   isAuthenticated: false,
   authenticate(cb) {
@@ -134,8 +115,19 @@ class Login extends React.Component {
 
     return (
       <div>
-        <LoginButton login={this.login} />
+      <NavBar />
+      <div className='App'>
+        <header className='App-header'>
+          <GoogleLogin
+            clientId="198987621325-8mjc0d3e410b1lt5goj0hj81qmrni2bk.apps.googleusercontent.com"
+            buttonText="Continue with Google"
+            onSuccess={this.login}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          />
+        </header>
       </div>
+    </div>
     )
   }
 }
