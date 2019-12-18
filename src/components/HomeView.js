@@ -42,7 +42,6 @@ export const HomeView = props => {
           <img src={logo} className='App-logo' alt='logo' />
           <br></br>
           <JoinModalButton />
-          <button onClick={createRoom}>Butt</button>
         </header>
       </div>
     </div>
