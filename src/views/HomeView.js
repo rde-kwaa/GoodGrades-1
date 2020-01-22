@@ -42,10 +42,10 @@ export const HomeView = props => {
     <div>
       <div className='App'>
         <header className='App-header'>
-          <h1>Welcome {props.user ? props.user.givenName : 'huest'}</h1>
+          <h1>Welcome {props.user ? props.user.givenName : 'Guest'}</h1>
           {room ? (
             <div>
-              <IconTextField value={room.room_code}></IconTextField>
+              <IconTextField value={room ? room.room_code : 'Login to get room code'}></IconTextField>
             </div>
           ) : null}
           <br></br>
