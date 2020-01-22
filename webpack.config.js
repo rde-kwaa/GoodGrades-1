@@ -1,45 +1,27 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const PORT = 8118;
+var path = require('path');
 module.exports = {
-  mode: 'development',
-  devtool: 'source-map',
-  entry: path.join(__dirname, './src/index.js'),
+  entry: './src/app.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js' // this is the compiled final javascript file which we will include in the index.html
   },
   module: {
-    rules: [
-      {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      },
-      {
-        test: /\.(html)$/,
-        use: {
-          loader: 'html-loader',
-          options: {
-            attrs: [':data-src']
-          }
-        }
-      }
-    ]
+    rules: [{
+      loader: 'babel-loader',
+      test: /\.js$/,
+      exclude: /node_modules/
+    }, {
+      test: /\.css$/,
+      use: [
+        'style-loader',
+        'css-loader'
+      ]
+    }]
   },
+  devtool: 'cheap-module-eval-source-map', // this helps to browser to point to the exact file in the console, helps in debug
   devServer: {
-    contentBase: 'dist',
-    liveReload: false,
-    port: PORT,
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'dist/index.html'
-    })
-  ]
+    contentBase: path.join(__dirname, 'public'),
+    historyApiFallback: true, // this prevents the default browser full page refresh on form submission and link change
+    port: 3000
+  }
 };
