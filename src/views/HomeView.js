@@ -2,8 +2,19 @@ import React, { useState, useEffect } from 'react';
 import JoinModalButton from '../components/JoinModalButton';
 import IconTextField from '../components/IconTextField';
 import { Button } from '@material-ui/core';
+import BoolComponent from '../components/BoolComponent';
 
 //Makes API call to GoodGradesServer to create a new room object
+
+const RoomCodeDisplay = props => {
+    let value = props.room ? room_code : 'Login to get room code'
+    console.log(props.children)
+    if (props.room)
+        return <IconTextField value={props.room ? room_code : 'Login to get room code'}/>
+    else
+    return props.children
+}
+
 
 export const HomeView = props => {
   const [room, setRoom] = useState(null);
@@ -32,33 +43,25 @@ export const HomeView = props => {
         });
     }
     if (redirect) {
-      // do something meaningful, Promises, if/else, whatever, and then
-      // console.log("room.sh/go/" + roomCode)
       window.location.assign('//room.sh/go/' + room.room_code);
     }
   });
 
   return (
+    
     <div>
       <div className='App'>
         <header className='App-header'>
           <h1>Welcome {props.user ? props.user.givenName : 'Guest'}</h1>
-          {room ? (
-            <div>
-              <IconTextField value={room ? room.room_code : 'Login to get room code'}></IconTextField>
-            </div>
-          ) : null}
-          <br></br>
-          {props.user.type === 'student' ? (
-            <JoinModalButton />
-          ) : (
+          <BoolComponent value={room && room.room_code}>
+            <IconTextField value={room ? room.room_code : 'Login to get room code'}/>
             <Button
-              variant='contained'
-              color='primary'
-              onClick={handleRedirect}>
-              Join Room
+                variant='contained'
+                color='primary'
+                onClick={handleRedirect}>
+                Join Room
             </Button>
-          )}
+          </BoolComponent>
         </header>
       </div>
     </div>
