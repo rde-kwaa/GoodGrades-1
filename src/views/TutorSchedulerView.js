@@ -167,7 +167,6 @@ class AppointmentFormContainerBasic extends React.PureComponent {
 
     const pickerEditorProps = field => ({
       className: classes.picker,
-      // keyboard: true,
       ampm: false,
       value: displayAppointmentData[field],
       onChange: date =>
@@ -203,12 +202,6 @@ class AppointmentFormContainerBasic extends React.PureComponent {
             </IconButton>
           </div>
           <div className={classes.content}>
-            {/* <div className={classes.wrapper}>
-              <Create className={classes.icon} color="action" />
-              <TextField
-                {...textEditorProps('title')}
-              />
-            </div> */}
             <div className={classes.wrapper}>
               <CalendarToday className={classes.icon} color='action' />
               <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -222,20 +215,6 @@ class AppointmentFormContainerBasic extends React.PureComponent {
                 />
               </MuiPickersUtilsProvider>
             </div>
-            {/* <div className={classes.wrapper}>
-              <LocationOn className={classes.icon} color="action" />
-              <TextField
-                {...textEditorProps('location')}
-              />
-            </div> */}
-            {/* <div className={classes.wrapper}>
-              <Notes className={classes.icon} color="action" />
-              <TextField
-                {...textEditorProps('notes')}
-                multiline
-                rows="6"
-              />
-            </div> */}
           </div>
           <div className={classes.buttonGroup}>
             {!isNewAppointment && (
@@ -472,8 +451,6 @@ class TutorSchedulerView2 extends React.PureComponent {
     let view = isMobile ? 'Day' : 'Week';
     this.setState({ currentViewName: view });
     this.getAppointments(this.props.user.unique_id);
-    // console.log("Device", window.screen.availHeight, window.screen.availWidth, window.screen.height, window.screen.width)
-    // console.log("Sick", this)
     if (this.props.socket){
       this.props.socket.on(RELOAD_DATA, () => {
         console.log("Triggered reload due to booked session!!!")
@@ -484,11 +461,6 @@ class TutorSchedulerView2 extends React.PureComponent {
   }
 
   componentWillMount() {
-    // socket.on(RELOAD_DATA, () => {
-    //   console.log("Triggered reload due to booked session!!!")
-    //   this.getAppointments(this.props.user.unique_id);
-    // });
-    // console.log("SOl", this)
   }
 
   getAppointments = unique_id => {
@@ -503,7 +475,6 @@ class TutorSchedulerView2 extends React.PureComponent {
     )
       .then(response => response.json())
       .then(data => {
-        //   appointments = data ? data.map(mapAppointmentData) : [];
         this.setState({
           data: data ? data.map(mapAppointmentData) : [],
           loading: false
@@ -563,10 +534,6 @@ class TutorSchedulerView2 extends React.PureComponent {
         }
       )
         .then(response => response.json())
-        // .then(() => {
-        //   this.setDeletedAppointmentId(deletedAppointmentId);
-        //   this.toggleConfirmationVisible();
-        // })
         .catch(() => console.log('Error'));
       return { data: nextData, deletedAppointmentId: null };
     });
@@ -644,30 +611,11 @@ class TutorSchedulerView2 extends React.PureComponent {
         this.props.socket.emit(RELOAD_DATA, "Tutor made changes to a session, students need to update", "student");
       }
       if (deleted !== undefined) {
-        // fetch(
-        //   'https://good-grades-server.herokuapp.com/api/events/deleteEvent',
-        //   {
-        //     method: 'POST',
-        //     headers: {
-        //       'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //       ...data[deleted]
-        //     })
-        //   }
-        // )
-        //   .then(response => response.json())
-        //   .then(() => {
-        //     this.setDeletedAppointmentId(deleted);
-        //     this.toggleConfirmationVisible();
-        //   })
-        //   .catch(() => console.log('Error'));
         this.setDeletedAppointmentId(deleted);
         this.toggleConfirmationVisible();
       }
       return { data, addedAppointment: {} };
     });
-    // this.props.socket.emit(RELOAD_DATA, "Tutor made changes, students need to update", "student");
   }
 
   changeAppointmentChanges(appointmentChanges) {

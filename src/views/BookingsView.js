@@ -69,7 +69,6 @@ export const BookingsView = props => {
     }
     if (redirect && roomCode) {
       // do something meaningful, Promises, if/else, whatever, and then
-      // console.log("room.sh/go/" + roomCode)
       window.location.assign('//room.sh/go/' + roomCode);
     }
   }, [props, redirect, roomCode]);
@@ -129,10 +128,7 @@ export const BookingsView = props => {
             <CircularProgress size={40} />
           ) : (
             <div>
-              {/* {props.user.type === 'student'
-            ? 'student bookings'
-            : 'tutor bookings'}
-          <br></br><br></br> */}
+
               {props.booked && props.booked.length > 0 ? (
                 <div>
                   <h4>Upcoming Bookings</h4>

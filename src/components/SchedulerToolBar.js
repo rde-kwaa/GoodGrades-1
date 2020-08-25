@@ -178,7 +178,6 @@ const TutorSelectorItem = ({ id, classes }) => {
   let text = 'All Sessions';
   let shortText = 'All';
   if (id) {
-    // bulletClass = createClassesByTutorId(id, classes, { background: true });
     text = getTutorById(id).username;
     shortText = getShortTutorById(id);
   }
@@ -399,12 +398,6 @@ export default class Demo extends React.PureComponent {
           <DateNavigator />
           <ViewSwitcher />
           <AllDayPanel />
-          {/* <AppointmentTooltip
-            contentComponent={TooltipContent}
-            commandButtonComponent={EditButton}
-            showOpenButton
-            showCloseButton
-          /> */}
           <AppointmentTooltip
             headerComponent={this.ToolTipHeader}
             contentComponent={this.ToolTipContent}

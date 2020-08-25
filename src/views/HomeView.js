@@ -33,7 +33,6 @@ export const HomeView = props => {
     }
     if (redirect) {
       // do something meaningful, Promises, if/else, whatever, and then
-      // console.log("room.sh/go/" + roomCode)
       window.location.assign('//room.sh/go/' + room.room_code);
     }
   });

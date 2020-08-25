@@ -43,9 +43,6 @@ export default function MediaCard() {
             component='h2'>
             Welcome to the next step in your academics
           </Typography>
-          {/* <Typography variant='body2' color='textSecondary' component='p'>
-
-          </Typography> */}
         </CardContent>
       </CardActionArea>
     </Card>

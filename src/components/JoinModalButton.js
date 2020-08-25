@@ -105,7 +105,6 @@ export default function SpringModal(props) {
   useEffect(() => {
     if (redirect) {
       // do something meaningful, Promises, if/else, whatever, and then
-      // console.log("room.sh/go/" + roomCode)
       window.location.assign('//room.sh/go/' + roomCode);
     }
   });
@@ -142,7 +141,6 @@ export default function SpringModal(props) {
     })
       .then(response => response.json())
       .then(data => {
-        // props.socket.emit(NOTIFICATION, {student_id: , student_username: , tutor_id: , tutor_username: , createAt: }, "tutors");
         if (data.student_id)
           props.socket.emit(NOTIFICATION, data, "tutor");
         return data
