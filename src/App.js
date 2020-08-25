@@ -80,9 +80,6 @@ function App() {
           ? `Student : ${elem.booking.students[0].username}`
           : `Tutor : ${elem.booking.tutor_username}`}
         <br />
-        {/* Tutor : {elem.booking.tutor_username}<br/> */}
-        {/* Student : { elem.booking.students[0].username }<br/> */}
-        {/* Date : { moment(elem.booking.start_time).format("dddd, MMM DD") }<br/> */}
         Time : {moment(elem.booking.start_time).format('hh:mm a')} -{' '}
         {moment(elem.booking.end_time).format('hh:mm a')}
         <br />
