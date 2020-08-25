@@ -16,6 +16,10 @@ import LoginCard from '../components/LoginCard';
 import './GoogleButton.css';
 import './FacebookButton.css';
 
+/**
+ * We use both Google and Facebook for our login Authentication.
+ */
+
 const responseGoogle = response => {
   console.log(response);
 };

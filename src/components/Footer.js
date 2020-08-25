@@ -1,6 +1,12 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 
+/**
+ * This is an example of a stateless/functional component.
+ * We don't need to incorporate the logic that you use in a stateful/class component.
+ * A footer is a good example of a component that doesn't require to be a full fledged class.
+ */
+
 var style = {
   backgroundColor: '#29b6f6e3',
   textAlign: 'center',

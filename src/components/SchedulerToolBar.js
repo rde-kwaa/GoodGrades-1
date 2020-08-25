@@ -49,13 +49,10 @@ const createClassesByTutorId = (
   if (hover) result.push(classes[`${tutor}TutorHover`]);
   return result.join(' ');
 };
+
+// A good example of the CSS-in-JS styling technique
+
 const styles = theme => ({
-  // ...tutors.reduce((acc, { title, color, activeColor }) => {
-  //   acc[`${title}TutorBackground`] = { background: color, '& button.edit-button': { background: lighten(color, 0.15) } };
-  //   acc[`${title}TutorColor`] = { color };
-  //   acc[`${title}TutorHover`] = { '&:hover': { background: activeColor } };
-  //   return acc;
-  // }, {}),
   contentItemValue: {
     padding: 0
   },

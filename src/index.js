@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// Material UI theming. We can define away from the default styling.
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -38,6 +39,9 @@ const theme = createMuiTheme({
   }
 });
 
+/**
+ * We wrap our App within the Material UI theme provider to allow all MUI comps to inherit our custom themes.
+ */
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
     <App />

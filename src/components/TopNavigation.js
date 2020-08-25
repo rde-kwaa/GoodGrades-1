@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core';
 import { AccountCircleOutlined } from '@material-ui/icons';
 
+// A good example of the CSS-in-JS styling technique also called inline styling
 const styles = theme => ({
   menuArea: {
     zIndex: 100,

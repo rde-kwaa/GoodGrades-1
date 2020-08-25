@@ -17,7 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { isMobile } from 'react-device-detect';
 
-// import useStateWithLocalStorage from './components/UseStateWithLocalStorage.js';
+// Our main class for the Application
 
 const useStateWithLocalStorage = localStorageKey => {
   const [value, setValue] = React.useState(
@@ -198,6 +198,8 @@ function App() {
     setTab(currentTab);
     return currentTab;
   };
+
+// We handle all of our routes here. We implemented a new type of route system called swipeable routes.
 
   return (
     <BrowserRouter>

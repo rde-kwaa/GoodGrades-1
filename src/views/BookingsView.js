@@ -51,7 +51,6 @@ export const BookingsView = props => {
         });
         nQuickHelp.push(data);
         props.setQuickHelp(nQuickHelp);
-        // console.log("Rsponding to quickhelp", data)
         props.socket.emit(NOTIFICATION, data, {
           ...student,
           roomCode: props.user.room_code
